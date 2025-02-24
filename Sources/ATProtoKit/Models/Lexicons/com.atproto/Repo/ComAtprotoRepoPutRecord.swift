@@ -77,7 +77,7 @@ extension ComAtprotoLexicon.Repository {
            repository: String,
            collection: String,
            recordKey: String,
-           shouldValidate: Bool = true,
+           shouldValidate: Bool? = true,
            record: UnknownType,
            swapRecord: String? = nil,
            swapCommit: String? = nil
