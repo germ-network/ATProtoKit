@@ -80,7 +80,7 @@ extension ComAtprotoLexicon.Repository {
            shouldValidate: Bool = true,
            record: UnknownType,
            swapRecord: String? = nil,
-           swapCommit: String? = nil,
+           swapCommit: String? = nil
        ) {
            self.repository = repository
            self.collection = collection
