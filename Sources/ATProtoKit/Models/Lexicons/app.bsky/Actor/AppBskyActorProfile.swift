@@ -73,14 +73,14 @@ extension AppBskyLexicon.Actor {
         public let createdAt: Date?
         
         public init(
-            displayName: String?,
-            description: String?,
-            avatarBlob: ComAtprotoLexicon.Repository.BlobContainer?,
-            bannerBlob: ComAtprotoLexicon.Repository.BlobContainer?,
-            labels: [ComAtprotoLexicon.Label.SelfLabelsDefinition]?,
-            joinedViaStarterPack: ComAtprotoLexicon.Repository.StrongReference?,
-            pinnedPost: ComAtprotoLexicon.Repository.StrongReference?,
-            createdAt: Date?
+            displayName: String? = nil,
+            description: String? = nil,
+            avatarBlob: ComAtprotoLexicon.Repository.BlobContainer? = nil,
+            bannerBlob: ComAtprotoLexicon.Repository.BlobContainer? = nil,
+            labels: [ComAtprotoLexicon.Label.SelfLabelsDefinition]? = nil,
+            joinedViaStarterPack: ComAtprotoLexicon.Repository.StrongReference? = nil,
+            pinnedPost: ComAtprotoLexicon.Repository.StrongReference? = nil,
+            createdAt: Date? = nil
         ) {
             self.displayName = displayName
             self.description = description
