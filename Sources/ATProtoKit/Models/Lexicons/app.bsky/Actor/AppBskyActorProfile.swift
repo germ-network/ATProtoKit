@@ -75,8 +75,8 @@ extension AppBskyLexicon.Actor {
         public init(
             displayName: String? = nil,
             description: String? = nil,
-            avatarBlob: ComAtprotoLexicon.Repository.BlobContainer? = nil,
-            bannerBlob: ComAtprotoLexicon.Repository.BlobContainer? = nil,
+            avatarBlob: ComAtprotoLexicon.Repository.UploadBlobOutput? = nil,
+            bannerBlob: ComAtprotoLexicon.Repository.UploadBlobOutput? = nil,
             labels: [ComAtprotoLexicon.Label.SelfLabelsDefinition]? = nil,
             joinedViaStarterPack: ComAtprotoLexicon.Repository.StrongReference? = nil,
             pinnedPost: ComAtprotoLexicon.Repository.StrongReference? = nil,
@@ -97,8 +97,8 @@ extension AppBskyLexicon.Actor {
 
             self.displayName = try container.decodeIfPresent(String.self, forKey: .displayName)
             self.description = try container.decodeIfPresent(String.self, forKey: .description)
-            self.avatarBlob = try container.decodeIfPresent(ComAtprotoLexicon.Repository.BlobContainer.self, forKey: .avatarBlob)
-            self.bannerBlob = try container.decodeIfPresent(ComAtprotoLexicon.Repository.BlobContainer.self, forKey: .bannerBlob)
+            self.avatarBlob = try container.decodeIfPresent(ComAtprotoLexicon.Repository.UploadBlobOutput.self, forKey: .avatarBlob)
+            self.bannerBlob = try container.decodeIfPresent(ComAtprotoLexicon.Repository.UploadBlobOutput.self, forKey: .bannerBlob)
             self.labels = try container.decodeIfPresent([ComAtprotoLexicon.Label.SelfLabelsDefinition].self, forKey: .labels)
             self.joinedViaStarterPack = try container.decodeIfPresent(ComAtprotoLexicon.Repository.StrongReference.self, forKey: .joinedViaStarterPack)
             self.pinnedPost = try container.decodeIfPresent(ComAtprotoLexicon.Repository.StrongReference.self, forKey: .pinnedPost)
