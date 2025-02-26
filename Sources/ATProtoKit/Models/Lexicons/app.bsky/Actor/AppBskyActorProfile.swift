@@ -71,43 +71,47 @@ extension AppBskyLexicon.Actor {
 
         /// The date and time the profile was created. Optional.
         public let createdAt: Date?
+    }
+}
 
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
+//defining Codable in an extension allows swift to automatically synthsize
+//the memberwise initializer 
+extension AppBskyLexicon.Actor.ProfileRecord: Codable {
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
 
-            self.displayName = try container.decodeIfPresent(String.self, forKey: .displayName)
-            self.description = try container.decodeIfPresent(String.self, forKey: .description)
-            self.avatarBlob = try container.decodeIfPresent(ComAtprotoLexicon.Repository.UploadBlobOutput.self, forKey: .avatarBlob)
-            self.bannerBlob = try container.decodeIfPresent(ComAtprotoLexicon.Repository.UploadBlobOutput.self, forKey: .bannerBlob)
-            self.labels = try container.decodeIfPresent([ComAtprotoLexicon.Label.SelfLabelsDefinition].self, forKey: .labels)
-            self.joinedViaStarterPack = try container.decodeIfPresent(ComAtprotoLexicon.Repository.StrongReference.self, forKey: .joinedViaStarterPack)
-            self.pinnedPost = try container.decodeIfPresent(ComAtprotoLexicon.Repository.StrongReference.self, forKey: .pinnedPost)
-            self.createdAt = try container.decodeDateIfPresent(forKey: .createdAt)
-        }
+        self.displayName = try container.decodeIfPresent(String.self, forKey: .displayName)
+        self.description = try container.decodeIfPresent(String.self, forKey: .description)
+        self.avatarBlob = try container.decodeIfPresent(ComAtprotoLexicon.Repository.UploadBlobOutput.self, forKey: .avatarBlob)
+        self.bannerBlob = try container.decodeIfPresent(ComAtprotoLexicon.Repository.UploadBlobOutput.self, forKey: .bannerBlob)
+        self.labels = try container.decodeIfPresent([ComAtprotoLexicon.Label.SelfLabelsDefinition].self, forKey: .labels)
+        self.joinedViaStarterPack = try container.decodeIfPresent(ComAtprotoLexicon.Repository.StrongReference.self, forKey: .joinedViaStarterPack)
+        self.pinnedPost = try container.decodeIfPresent(ComAtprotoLexicon.Repository.StrongReference.self, forKey: .pinnedPost)
+        self.createdAt = try container.decodeDateIfPresent(forKey: .createdAt)
+    }
 
-        public func encode(to encoder: any Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
 
-            try container.encodeIfPresent(self.displayName, forKey: .displayName)
-            try container.encodeIfPresent(self.description, forKey: .description)
-            try container.encodeIfPresent(self.avatarBlob, forKey: .avatarBlob)
-            try container.encodeIfPresent(self.bannerBlob, forKey: .bannerBlob)
-            try container.encodeIfPresent(self.labels, forKey: .labels)
-            try container.encodeIfPresent(self.joinedViaStarterPack, forKey: .joinedViaStarterPack)
-            try container.encodeIfPresent(self.pinnedPost, forKey: .pinnedPost)
-            try container.encodeDateIfPresent(self.createdAt, forKey: .createdAt)
-        }
+        try container.encodeIfPresent(self.displayName, forKey: .displayName)
+        try container.encodeIfPresent(self.description, forKey: .description)
+        try container.encodeIfPresent(self.avatarBlob, forKey: .avatarBlob)
+        try container.encodeIfPresent(self.bannerBlob, forKey: .bannerBlob)
+        try container.encodeIfPresent(self.labels, forKey: .labels)
+        try container.encodeIfPresent(self.joinedViaStarterPack, forKey: .joinedViaStarterPack)
+        try container.encodeIfPresent(self.pinnedPost, forKey: .pinnedPost)
+        try container.encodeDateIfPresent(self.createdAt, forKey: .createdAt)
+    }
 
-        enum CodingKeys: String, CodingKey {
-            case type = "$type"
-            case displayName
-            case description
-            case avatarBlob = "avatar"
-            case bannerBlob = "banner"
-            case labels
-            case joinedViaStarterPack
-            case pinnedPost
-            case createdAt
-        }
+    enum CodingKeys: String, CodingKey {
+        case type = "$type"
+        case displayName
+        case description
+        case avatarBlob = "avatar"
+        case bannerBlob = "banner"
+        case labels
+        case joinedViaStarterPack
+        case pinnedPost
+        case createdAt
     }
 }
