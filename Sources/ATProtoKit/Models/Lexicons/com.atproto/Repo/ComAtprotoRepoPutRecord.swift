@@ -17,7 +17,7 @@ extension ComAtprotoLexicon.Repository {
     /// - SeeAlso: This is based on the [`com.atproto.repo.putRecord`][github] lexicon.
     ///
     /// [github]: https://github.com/bluesky-social/atproto/blob/main/lexicons/com/atproto/repo/putRecord.json
-    public struct PutRecordRequestBody: Sendable, Codable {
+    public struct PutRecordRequestBody: Sendable {
 
         /// The decentralized identifier (DID) or handle of the repository.
         ///
@@ -72,24 +72,6 @@ extension ComAtprotoLexicon.Repository {
             case swapRecord
             case swapCommit
         }
-        
-        public init(
-           repository: String,
-           collection: String,
-           recordKey: String,
-           shouldValidate: Bool? = true,
-           record: UnknownType,
-           swapRecord: String? = nil,
-           swapCommit: String? = nil
-       ) {
-           self.repository = repository
-           self.collection = collection
-           self.recordKey = recordKey
-           self.shouldValidate = shouldValidate
-           self.record = record
-           self.swapRecord = swapRecord
-           self.swapCommit = swapCommit
-       }
     }
 
     /// A output model for creating a record that replaces a previous record.
@@ -125,3 +107,8 @@ extension ComAtprotoLexicon.Repository {
         }
     }
 }
+
+//defining the codable extension in an extension allows the memberwise
+//initializer to be generated automatically
+//https://stackoverflow.com/questions/48155118/explit-conformance-to-codable-removes-memberwise-initializer-generation-on-struc
+extension ComAtprotoLexicon.Repository.PutRecordRequestBody: Codable {}
