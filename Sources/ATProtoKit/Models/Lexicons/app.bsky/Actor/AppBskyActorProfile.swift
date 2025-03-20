@@ -45,7 +45,7 @@ extension AppBskyLexicon.Actor {
         ///
         /// - Note: According to the AT Protocol specifications: "Small image to be displayed next
         /// to posts from account. AKA, 'profile picture'"
-        public let avatarBlob: ComAtprotoLexicon.Repository.BlobContainer?
+        public let avatarBlob: ComAtprotoLexicon.Repository.UploadBlobOutput?
 
         /// The banner image URL of the profile. Optional.
         ///
@@ -55,7 +55,7 @@ extension AppBskyLexicon.Actor {
         ///
         /// - Note: According to the AT Protocol specifications: "Larger horizontal image to
         /// display behind profile view."
-        public let bannerBlob: ComAtprotoLexicon.Repository.BlobContainer?
+        public let bannerBlob: ComAtprotoLexicon.Repository.UploadBlobOutput?
 
         /// An array of user-defined labels. Optional.
         ///
