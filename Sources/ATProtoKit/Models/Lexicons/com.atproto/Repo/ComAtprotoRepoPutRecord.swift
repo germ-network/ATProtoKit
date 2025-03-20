@@ -62,6 +62,24 @@ extension ComAtprotoLexicon.Repository {
         /// - Note: According to the AT Protocol specifications: "Compare and swap with the
         /// previous commit by CID."
         public let swapCommit: String?
+        
+        public init(
+            repository: String,
+            collection: String,
+            recordKey: String,
+            shouldValidate: Bool?,
+            record: UnknownType,
+            swapRecord: String?,
+            swapCommit: String?
+        ) {
+            self.repository = repository
+            self.collection = collection
+            self.recordKey = recordKey
+            self.shouldValidate = shouldValidate
+            self.record = record
+            self.swapRecord = swapRecord
+            self.swapCommit = swapCommit
+        }
     }
 
     /// A output model for creating a record that replaces a previous record.
