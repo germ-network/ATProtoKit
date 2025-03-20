@@ -62,16 +62,6 @@ extension ComAtprotoLexicon.Repository {
         /// - Note: According to the AT Protocol specifications: "Compare and swap with the
         /// previous commit by CID."
         public let swapCommit: String?
-
-        enum CodingKeys: String, CodingKey {
-            case repository = "repo"
-            case collection
-            case recordKey = "rkey"
-            case shouldValidate = "validate"
-            case record
-            case swapRecord
-            case swapCommit
-        }
     }
 
     /// A output model for creating a record that replaces a previous record.
@@ -111,4 +101,14 @@ extension ComAtprotoLexicon.Repository {
 //defining the codable extension in an extension allows the memberwise
 //initializer to be generated automatically
 //https://stackoverflow.com/questions/48155118/explit-conformance-to-codable-removes-memberwise-initializer-generation-on-struc
-extension ComAtprotoLexicon.Repository.PutRecordRequestBody: Codable {}
+extension ComAtprotoLexicon.Repository.PutRecordRequestBody: Codable {
+    enum CodingKeys: String, CodingKey {
+        case repository = "repo"
+        case collection
+        case recordKey = "rkey"
+        case shouldValidate = "validate"
+        case record
+        case swapRecord
+        case swapCommit
+    }
+}
